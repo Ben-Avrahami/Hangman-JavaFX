@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HangmanController">
+   <children>
+      <Label fx:id="textBox" alignment="CENTER" layoutX="208.0" layoutY="383.0" prefHeight="42.0" prefWidth="424.0" text=" _ _ _ _ _ _ _ _ _ _ _ _" />
+      <Line fx:id="firstLine" endX="100.0" layoutX="412.0" layoutY="367.0" opacity="0.0" startX="-100.0" />
+      <Line fx:id="secondLine" endX="100.0" layoutX="270.0" layoutY="367.0" opacity="0.0" startX="100.0" startY="-316.0" />
+      <Line fx:id="thirdLine" endX="-4.0" layoutX="472.0" layoutY="51.0" opacity="0.0" startX="-100.0" />
+      <Line fx:id="forthLine" endX="-91.5" endY="58.0" layoutX="560.0" layoutY="51.0" opacity="0.0" startX="-91.5" startY="0.5" />
+      <Circle fx:id="fifthLine" fill="WHITE" layoutX="468.0" layoutY="139.0" opacity="0.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="sixthLine" endX="-3.0" endY="132.0" layoutX="471.0" layoutY="168.0" opacity="0.0" startX="-3.0" startY="1.0" />
+      <Line fx:id="seventhLine" endX="100.0" layoutX="366.0" layoutY="198.0" opacity="0.0" startX="70.0" startY="73.0" />
+      <Line fx:id="ninthLine" endX="107.0" endY="-0.5" layoutX="361.0" layoutY="301.0" opacity="0.0" startX="90.0" startY="31.0" />
+      <Line fx:id="eightLine" endX="103.0" endY="142.0" layoutX="399.0" layoutY="123.0" opacity="0.0" startX="70.0" startY="73.0" />
+      <Line fx:id="tenthLine" endX="8.0" endY="18.0" layoutX="479.0" layoutY="315.0" opacity="0.0" startX="-10.5" startY="-14.5" />
+      <GridPane fx:id="btnGrid" gridLinesVisible="true" layoutX="52.0" layoutY="425.0" prefHeight="193.0" prefWidth="737.0">
+        <rowConstraints>
+          <RowConstraints maxHeight="97.0" minHeight="10.0" prefHeight="97.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>
