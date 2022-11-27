@@ -1,3 +1,5 @@
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -49,19 +51,32 @@ public class HangmanController {
 
 	private char letter='a';
 
-	public void initiallize() {
-		btns = new Button[NUMBER_OF_LETTERS];
-		 btnGrid.add(new Button(), 1, 0);
-		
+	public void initialize() {
+		btns = new Button[NUMBER_OF_LETTERS];		
 		for (int i = 0; i < btns.length; i++) {
 			btns[i] = new Button(letter+ "");
 			btns[i].setPrefSize(btnGrid.getPrefWidth()/BUTTONS_IN_A_ROW, btnGrid.getPrefHeight()/BUTTONS_IN_A_ROW);
 			btnGrid.add(btns[i], i%BUTTONS_IN_A_ROW , i/BUTTONS_IN_A_ROW);
 			letter++;
+			
+			btns[i].setOnAction(new EventHandler<ActionEvent>(){
+				
+				public void handle(ActionEvent event) {
+					handleBtn(event);
+				}
+			
+				
+			});
+		
+		}
+	}
+		
+		private void handleBtn(ActionEvent event) {
+			System.out.println("test");
 		}
 
 
 
 	}
-}
+
 
