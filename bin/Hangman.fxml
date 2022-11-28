@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HangmanController">
    <children>
-      <Label fx:id="textBox" alignment="CENTER" layoutX="208.0" layoutY="383.0" prefHeight="42.0" prefWidth="424.0" text=" _ _ _ _ _ _ _ _ _ _ _ _" />
+      <Label fx:id="textBox" alignment="CENTER" layoutX="208.0" layoutY="383.0" prefHeight="42.0" prefWidth="424.0" />
       <Line fx:id="firstLine" endX="100.0" layoutX="412.0" layoutY="367.0" startX="-100.0" visible="false" />
       <Line fx:id="secondLine" endX="100.0" layoutX="270.0" layoutY="367.0" startX="100.0" startY="-316.0" visible="false" />
       <Line fx:id="thirdLine" endX="-4.0" layoutX="472.0" layoutY="51.0" startX="-100.0" visible="false" />
