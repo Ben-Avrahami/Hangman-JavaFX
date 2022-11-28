@@ -58,7 +58,7 @@ public class HangmanController {
 	public void initialize() {
 		btns = new Button[NUMBER_OF_LETTERS];
 		Shape shapes[]={firstLine,secondLine,thirdLine,forthLine,fifthLine,sixthLine,seventhLine,eightLine,ninthLine,tenthLine}; 
-		shapes[3].setVisible(true);
+		shapes[3].setVisible(true);//set visibilty of the shape 
 		for (int i = 0; i < btns.length; i++) {
 			btns[i] = new Button(letter+ "");
 			btns[i].setPrefSize(btnGrid.getPrefWidth()/BUTTONS_IN_A_ROW, btnGrid.getPrefHeight()/BUTTONS_IN_A_ROW);
