@@ -1,5 +1,4 @@
 import javax.swing.JOptionPane;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -56,14 +55,14 @@ public class HangmanController {
 	private int strikes=0;
 	private String labelText="";
 	private char letter='a';
-	int result=-1;
+	int result;
 	HangmanLogic game;
 
 	public void initialize() {
-		HangmanLogic game= new HangmanLogic("armadilo");//creates the game
+		game= new HangmanLogic("armadilo");//creates the game
 		btns = new Button[NUMBER_OF_LETTERS];//array of buttons
 		shapes=new Shape[NUMBER_OF_STRIKES];
-		shapes[0]=firstLine;
+		shapes[0]= firstLine;
 		shapes[1]=secondLine;
 		shapes[2]=thirdLine;
 		shapes[3]=forthLine;
@@ -81,70 +80,71 @@ public class HangmanController {
 			letter++;//goes to the next char
 
 			btns[i].setOnAction(new EventHandler<ActionEvent>(){
-
 				public void handle(ActionEvent event) {
-					result=0;
-					Button btn=(Button) event.getSource();//gets the button the was pressed
-					btn.setDisable(true);
-					if(strikes<NUMBER_OF_STRIKES) {//if the game is still continuing
-						char c= btn.getText().charAt(0);
-						result=game.checkLetter(c,0);
-						if(result==-1) {
-							//strike();//adds a strike
-							game.addStrike();
-							shapes[game.getStrikes()-1].setVisible(true);//set visibility of the shapes
-						
-							if (game.getStrikes()==NUMBER_OF_STRIKES) {
-								int answer = JOptionPane.showOptionDialog(null, "Gameover, do you want to play another game?","Hangman", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null , null , 0);
-								if(answer!=0)
-									return;//stops the game from running
-								//else {
-								//create a replay function
-								//}
-							}
-							return;//stops the running of the functions for this button press if it was not correct
-						}
-						setLabelText(result, c);
-						int last= game.getWord().lastIndexOf(c);
-						while(result!=last) {
-							result=game.checkLetter(c,result+1);
-							setLabelText(result, c);
-						}
+					handleButton(event);
+				}	
+			});
 
-					}
-			
-				else 
-					System.out.println("game is over");
-			}	
-		});
 
+		}
 
 	}
+	private void handleButton(ActionEvent event) {
+		result=0;
+		Button btn=(Button) event.getSource();//gets the button the was pressed
+		btn.setDisable(true);
+		if(strikes<NUMBER_OF_STRIKES) {//if the game is still continuing
+			char c= btn.getText().charAt(0);
+			System.out.println("here");
+			result=game.checkLetter(c,0);
+			System.out.println("here");
+			if(result==-1) {
+				strike();//adds a strike	
+				if (game.getStrikes()==NUMBER_OF_STRIKES) {
+					int answer = JOptionPane.showOptionDialog(null, "Gameover, do you want to play another game?","Hangman", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null , null , 0);
+					if(answer!=0)
+						return;//stops the game from running
+					//else {
+					//create a replay function
+					//}
+				}
+				return;//stops the running of the functions for this button press if it was not correct
+			}
+			setLabelText(result, c);
+			int last= game.getWord().lastIndexOf(c);
+			while(result!=last) {
+				result=game.checkLetter(c,result+1);
+				setLabelText(result, c);
+			}
 
-}
+		}
 
-private void setLabelText(int i, char c) {
-	char[] textArray=labelText.toCharArray();
-	textArray[i]=c;
-	labelText=String.valueOf(textArray);
-	textBox.setText(labelText);
+		else 
+			System.out.println("game is over");
+	}
 
-}
-/**
- * This method sets the initial text of the label 
- * @param length int representing the length of the word the user need to guess correctly in the hangman game
- */
-private void setInitialLabelText(int length) {
-	for (int i=0; i<length; i++) {
-		labelText= labelText+ "_";
+	private void setLabelText(int i, char c) {
+		char[] textArray=labelText.toCharArray();
+		textArray[i]=c;
+		labelText=String.valueOf(textArray);
+		textBox.setText(labelText);
 
 	}
-	textBox.setText(labelText);
-}
-private void strike() {
-	game.addStrike();
-	shapes[game.getStrikes()-1].setVisible(true);//set visibility of the shape
-}
+	/**
+	 * This method sets the initial text of the label 
+	 * @param length int representing the length of the word the user need to guess correctly in the hangman game
+	 */
+	private void setInitialLabelText(int length) {
+		for (int i=0; i<length; i++) {
+			labelText= labelText+ "_";
+
+		}
+		textBox.setText(labelText);
+	}
+	private void strike() {
+		game.addStrike();
+		shapes[game.getStrikes()-1].setVisible(true);//set visibility of the shape
+	}
 
 
 
