@@ -5,7 +5,6 @@ public class HangmanLogic {
 	public HangmanLogic(String word) {
 		_word=word.toLowerCase();
 		_strikes=0;
-		System.out.println(word);
 	}
 
 	public int checkLetter(char letter, int from) {
