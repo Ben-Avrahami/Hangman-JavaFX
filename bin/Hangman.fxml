@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="797.0" prefWidth="1035.0" style="-fx-background-image: url('https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148830026.jpg'); -fx-background-repeat: no-repeat; -fx-background-size: 1035px 797px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HangmanController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="797.0" prefWidth="1035.0" style="-fx-background-image: url('https://i.pinimg.com/originals/ee/50/de/ee50dec983d90280a90a40afbe5be29d.jpg'); -fx-background-repeat: no-repeat; -fx-background-size: 1035px 797px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HangmanController">
    <children>
       <Label fx:id="textBox" alignment="CENTER" layoutX="138.0" layoutY="437.0" prefHeight="93.0" prefWidth="737.0">
          <font>

@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import javax.swing.JOptionPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -60,7 +59,7 @@ public class HangmanController {
 	int result;
 	HangmanLogic game;//the game object from HangmanLogic class
 
-	public void initialize() throws FileNotFoundException {
+	public void initialize() {
 		ReadFile.openFile();//opens the text file with the list of words
 		game= new HangmanLogic(ReadFile.getWord());//creates the game
 		btns = new Button[NUMBER_OF_LETTERS];//array of buttons
@@ -85,22 +84,16 @@ public class HangmanController {
 
 			btns[i].setOnAction(new EventHandler<ActionEvent>(){//sets the function for the buttons
 				public void handle(ActionEvent event) {
-					try {
-						handleButton(event);
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					}
+					handleButton(event);
 				}	
 			}); 
-
-
 		}
 
 	}
 	/*
 	 * This method will be executed at a player press of a letter button on the screen 
 	 */
-	private void handleButton(ActionEvent event) throws FileNotFoundException {
+	private void handleButton(ActionEvent event){
 		result=0;
 		Button btn=(Button) event.getSource();//gets the button the was pressed
 		btn.setDisable(true);//isables the button after it was pressed
@@ -127,7 +120,7 @@ public class HangmanController {
 	/*
 	 * This method sets the text within the label that shows what letters the player guessed correctly
 	 */
-	private void setLabelText(int i, char c) throws FileNotFoundException {
+	private void setLabelText(int i, char c) {
 		if(i>=0) {
 			char[] textArray=labelText.toCharArray();//transform the string to char array
 			textArray[i]=c;
@@ -165,7 +158,7 @@ public class HangmanController {
 	/*
 	 * This method is called when the game ended with win or loss and depending on the situation display a message to the player and calls the restart func
 	 */
-	private void gameEnded(int status) throws FileNotFoundException {
+	private void gameEnded(int status) {
 		int answer;
 		if (status==WON) 
 			answer = JOptionPane.showOptionDialog(null, "Game Won! \nThe word was " + game.getWord()+"\nDo you want to play another game?","Hangman", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null , null , 0);
@@ -180,10 +173,10 @@ public class HangmanController {
 			reset();
 		}
 	}
-/*
- * This method resets the game values before starting a new game 
- */
-	private void reset() throws FileNotFoundException {
+	/*
+	 * This method resets the game values before starting a new game 
+	 */
+	private void reset() {
 		game.reset(ReadFile.getWord());
 		labelText="";//sets an empty text before putting the underscores
 		setInitialLabelText();
