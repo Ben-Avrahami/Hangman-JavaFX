@@ -57,11 +57,11 @@ java Main
 <p><a href="https://github.com/Ben-Avrahami">Ben Avrahami</a></p>
 
 ## ?? About Me
-? Software developer with knowledge in Java, C, Python.
+ Software developer with knowledge in Java, C, Python.
 
-? Experience developing projects using: Java, C, JavaFX, Git, GitHub etc.
+ Experience developing projects using: Java, C, JavaFX, Git, GitHub etc.
 
-? B.Sc. Computer Science Student at The Open University of Israel.
+ B.Sc. Computer Science Student at The Open University of Israel.
 
 
 
