@@ -1,8 +1,11 @@
-import javax.swing.JOptionPane;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
@@ -121,7 +124,7 @@ public class HangmanController {
 	 * This method sets the text within the label that shows what letters the player guessed correctly
 	 */
 	private void setLabelText(int i, char c) {
-		if(i>=0) {
+		if(i>=0 && i<labelText.length()) {
 			char[] textArray=labelText.toCharArray();//transform the string to char array
 			textArray[i]=c;
 			labelText=String.valueOf(textArray);//transform the char array to string
@@ -159,20 +162,25 @@ public class HangmanController {
 	 * This method is called when the game ended with win or loss and depending on the situation display a message to the player and calls the restart func
 	 */
 	private void gameEnded(int status) {
-		int answer;
-		if (status==WON) 
-			answer = JOptionPane.showOptionDialog(null, "Game Won! \nThe word was " + game.getWord()+"\nDo you want to play another game?","Hangman", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null , null , 0);
-		else 
-			answer = JOptionPane.showOptionDialog(null, "Gameover \nThe word was " + game.getWord()+ "\nDo you want to play another game?","Hangman", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null , null , 0);
-
-		if(answer!=0) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setContentText("The word was: " + game.getWord()+ "\nIf you wish to play another game press: OK \nIf you wish to close the game press: CANCEL ");
+		if (status==WON) {
+			alert.setTitle("Game Won");
+			alert.setHeaderText("Game Won");
+		}
+		else if (status==LOST) {
+			alert.setTitle("Game Lost");
+			alert.setHeaderText("Game Lost");
+		}
+		Optional<ButtonType> option = alert.showAndWait();
+		if (option.get() == ButtonType.OK)
+			reset();
+		else if (option.get() == ButtonType.CANCEL){
 			ReadFile.closeInput();//closes the Text file
 			System.exit(0);//stops the game from running
 		}
-		else {
-			reset();
-		}
 	}
+
 	/*
 	 * This method resets the game values before starting a new game 
 	 */
